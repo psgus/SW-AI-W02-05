@@ -1,2 +1,17 @@
-# 완전탐색 - 차이를 최대로 (백준 실버2)
-# 문제 링크: https://www.acmicpc.net/problem/10819
+# Brute Force - Maximum Difference (BOJ 10819)
+
+from itertools import permutations
+
+n = int(input())
+numbers = list(map(int, input().split()))
+answer = 0
+
+for order in permutations(numbers):
+    total = 0
+
+    for i in range(n - 1):
+        total += abs(order[i] - order[i + 1])
+
+    answer = max(answer, total)
+
+print(answer)
