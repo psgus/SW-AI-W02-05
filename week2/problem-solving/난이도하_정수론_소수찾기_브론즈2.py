@@ -1,2 +1,18 @@
-# 정수론 - 소수 찾기 (백준 브론즈2)
-# 문제 링크: https://www.acmicpc.net/problem/1978
+# Number Theory - Finding Prime Numbers (BOJ 1978)
+
+n = int(input())
+numbers = list(map(int, input().split()))
+
+
+def is_prime(number):
+    if number < 2:
+        return False
+
+    for divisor in range(2, int(number ** 0.5) + 1):
+        if number % divisor == 0:
+            return False
+
+    return True
+
+
+print(sum(is_prime(number) for number in numbers))
