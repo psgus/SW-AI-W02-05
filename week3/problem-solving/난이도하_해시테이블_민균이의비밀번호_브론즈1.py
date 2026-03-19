@@ -1,2 +1,10 @@
-# 해시 테이블 - 민균이의 비밀번호 (백준 브론즈1)
-# 문제 링크: https://www.acmicpc.net/problem/9933
+# Hash Table - Minkyun's Password (BOJ 9933)
+
+n = int(input())
+words = [input().strip() for _ in range(n)]
+word_set = set(words)
+
+for word in words:
+    if word[::-1] in word_set:
+        print(len(word), word[len(word) // 2])
+        break
