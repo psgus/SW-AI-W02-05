@@ -33,26 +33,42 @@ DFS: [0, 1, 2, 3] (순서는 구현에 따라 다를 수 있음)
 def dfs(graph, start, visited=None):
     """
     깊이 우선 탐색 (재귀)
-    
+
     Args:
         graph: 그래프 딕셔너리
         start: 현재 정점
         visited: 방문 리스트
-    
+
     Returns:
         방문 순서 리스트
     """
     # TODO: visited가 None이면 초기화
-    pass
-    
     # TODO: 현재 정점 방문
-    pass
-    
     # TODO: 인접한 정점들에 대해 재귀
     ## 방문하지 않은 정점이면 재귀 호출
-    pass
-    
+    # 스택
+    stack = [start]
+    visited = []
+    while stack:
+        node = stack.pop()
+        if node not in visited:
+            visited.append(node)
+        for next in graph[node]:
+            if next not in visited:
+                visited.append(next)
+                stack.append(next)
+    return  visited
+
+    #재귀
+    '''
+    if visited is None:
+        visited=[]
+    visited.append(start)
+    for next in graph[start]:
+        if next not in visited:
+            dfs(graph,next,visited)
     return visited
+    '''
 
 # 테스트 케이스
 if __name__ == "__main__":
