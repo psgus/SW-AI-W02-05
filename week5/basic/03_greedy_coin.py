@@ -7,7 +7,7 @@
 - 매 순간 최선의 선택(가장 큰 동전)을 합니다.
 
 입력:
-- change: 거슬러줄 금액
+- change: 거슬러줄
 - coins: 사용 가능한 동전 종류 (예: [500, 100, 50, 10])
 
 출력:
@@ -40,14 +40,20 @@ def make_change_greedy(change, coins):
     Returns:
         (총 개수, {동전: 개수} 딕셔너리)
     """
-    result = {}
-    total_coins = 0
-    
     # TODO: 각 동전에 대해 반복
     ## 현재 동전으로 거슬러줄 수 있는 개수 계산    
     ## 개수가 0보다 크면 결과에 추가
-    pass
-    
+    n= len(coins)
+    result = {}
+    total_coins = 0
+    for i in range(n):
+        if change >= coins[i]:
+            cnt = change//coins[i]
+            result[coins[i]] = cnt
+            total_coins += cnt
+            change -= cnt * coins[i]
+        if change == 0:
+            break
     return total_coins, result
 
 # 테스트 케이스
